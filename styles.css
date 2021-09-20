@@ -29,13 +29,13 @@
   scrollbar-color: rgb(210, 210, 210) rgb(46, 54, 69) !important;
   scrollbar-width: thin !important;
 } */
-/* @-moz-document url-prefix('') {
+@-moz-document url-prefix('') {
   html {
     overflow-y: scroll;
-    scrollbar-color: lightblue purple;
+    scrollbar-color: rgb(78, 78, 78) rgb(41, 41, 41);
     scrollbar-width: thin;
   }
-} */
+}
 body {
   font-family: "Lato", sans-serif;
   background: #16141b;
@@ -84,7 +84,8 @@ h5 {
 
 h1 {
   color: #f1f1f1;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
 }
 
 .poke-container {
@@ -200,4 +201,49 @@ footer a {
 
 footer img {
   width: 4rem;
+}
+
+@media (max-width: 450px) {
+  .pokemon-logo {
+    all: revert;
+    width: 9rem;
+  }
+  .pokeball {
+    height: 1.5rem;
+  }
+  .title {
+    top: 4.2rem;
+  }
+  .title h1 {
+    font-size: 0.9rem;
+  }
+
+  /* .pokemon {
+    height: 18.75rem;
+    width: 10.5rem;
+    margin: 0.5rem;
+  }
+  .pokemon .img-container {
+    width: 8.5rem;
+    height: 8.5rem;
+    transform: translateX(-0.65rem);
+  }
+  .info {
+    width: 8.5rem;
+    transform: translateX(-0.65rem);
+  }
+  .type-data {
+    margin-top: 0.5rem;
+  } */
+  .pokemon {
+    transform: scale(0.8);
+    margin: 0;
+  }
+
+  @-moz-document url-prefix('') {
+    .pokemon {
+      transform: scale(0.85);
+      margin: 0;
+    }
+  }
 }

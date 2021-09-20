@@ -39,6 +39,7 @@ const getPokemon = async (id) =>{
         const url = `https://pokeapi.co/api/v2/pokemon/${id}`
         const response = await axios.get(url)
         const data = response.data
+        console.log(data)
         // console.log(data)
         createPokemonCard(data)
     }
@@ -69,7 +70,7 @@ const createPokemonCard = (pokemon) =>{
             <span class="type-icon"></span>
             
             <div class="img-container">
-                <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png" alt="">    
+                <img src="https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png" alt="">    
             </div>
             <div class="info">
                 
@@ -80,8 +81,8 @@ const createPokemonCard = (pokemon) =>{
                     </div>
                     <div> <small> Height</small> <h5 class="height"> ${pokemon.height/10} m</h5></div>      
                 </div>
-                <br>
-                <div> <small> Type:</small> <h5 class="type">${getPokemonType(pokeTypes)}</h5></div>
+                
+                <div class="type-data"> <small> Type:</small> <h5 class="type">${getPokemonType(pokeTypes)}</h5></div>
                 
      </div>
 
