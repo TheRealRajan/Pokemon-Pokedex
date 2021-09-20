@@ -186,6 +186,9 @@ small {
   display: block;
   margin: 0.25rem;
 }
+.type-data {
+  margin-top: 1rem;
+}
 
 footer {
   color: #f1f1f1;
