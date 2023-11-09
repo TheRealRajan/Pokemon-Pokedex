@@ -13,18 +13,22 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 /* Track */
 ::-webkit-scrollbar-track {
   background: linear-gradient(to top, #2c2b2e, #16141b);
 }
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(80, 80, 80);
 }
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(94, 93, 93);
 }
+
 /* :root {
   scrollbar-color: rgb(210, 210, 210) rgb(46, 54, 69) !important;
   scrollbar-width: thin !important;
@@ -36,6 +40,7 @@
     scrollbar-width: thin;
   }
 }
+
 body {
   font-family: "Lato", sans-serif;
   background: #16141b;
@@ -55,22 +60,25 @@ h5 {
 
 .title {
   display: flex;
+  gap: 0.25rem;
   align-items: center;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
   top: 5rem;
 }
+
 .pokeball {
   height: 2rem;
-  margin-right: 0.25rem;
-  animation: bounce 0.3s linear infinite alternate;
+  /* margin-right: 0.25rem; */
+  animation: bounce 0.4s linear infinite alternate;
 }
 
 @keyframes bounce {
   0% {
     transform: translateY(-10%);
   }
+
   100% {
     transform: translateY(10%);
   }
@@ -107,15 +115,19 @@ h1 {
   text-align: center;
   color: #f1f1f1;
   position: relative;
+  transition: scale 1s ease-in-out;
+}
+
+.pokemon:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
 }
 
 .pokemon .img-container {
-  background: linear-gradient(
-    to bottom,
-    rgba(214, 214, 214, 0.3),
-    rgba(77, 77, 77, 0.1)
-  );
-  /* background-color: rgba(255, 255, 255, 0.1); */
+  background: linear-gradient(to bottom,
+      rgba(214, 214, 214, 0.3),
+      rgba(77, 77, 77, 0.1));
   box-shadow: 0 0 10px 10px rgba(202, 201, 201, 0.05);
   border-radius: 50%;
   width: 150px;
@@ -124,9 +136,10 @@ h1 {
 }
 
 .pokemon .img-container img {
-  max-width: 85%;
-  margin-top: 1.5rem;
-  filter: saturate(130%) brightness(110%);
+  margin-top: 1rem;
+  width: 85%;
+  height: 85%;
+  /* filter: saturate(130%) brightness(110%); */
 }
 
 .pokemon .info {
@@ -143,6 +156,7 @@ h1 {
   top: 0.25rem;
   font-weight: bold;
 }
+
 .type-icon {
   position: absolute;
   right: 0.3rem;
@@ -158,9 +172,14 @@ h1 {
 .name {
   margin: 1rem 0 0.3rem;
   text-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.9);
+  transition: font-size 0.1s ease-out;
   /* background: rgba(0, 0, 0, 0.1);
   padding: 0.25rem 0.5rem;
   border-radius: 500px; */
+}
+
+.pokemon:hover .name {
+  font-size: 1.25rem;
 }
 
 .basic-info {
@@ -186,6 +205,7 @@ small {
   display: block;
   margin: 0.25rem;
 }
+
 .type-data {
   margin-top: 1rem;
 }
@@ -212,12 +232,15 @@ footer img {
     width: 9rem;
     margin-bottom: 1.5rem;
   }
+
   .pokeball {
     height: 1.5rem;
   }
+
   .title {
     top: 4.2rem;
   }
+
   .title h1 {
     font-size: 0.9rem;
   }
@@ -227,15 +250,18 @@ footer img {
     width: 10.5rem;
     margin: 0.5rem;
   }
+
   .pokemon .img-container {
     width: 8.5rem;
     height: 8.5rem;
     transform: translateX(-0.65rem);
   }
+
   .info {
     width: 8.5rem;
     transform: translateX(-0.65rem);
   }
+
   .type-data {
     margin-top: 0.5rem;
   }

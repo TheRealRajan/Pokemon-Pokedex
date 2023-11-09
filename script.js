@@ -1,5 +1,5 @@
 const pokeContainer = document.querySelector('.poke-container');
-const pokemonCount = 300
+const pokemonCount = 350
 
 const colors = {
     fire:'orange',
@@ -50,48 +50,43 @@ const getPokemon = async (id) =>{
 
 //Create pokemon info card in the DOM for each pokemon
 const createPokemonCard = (pokemon) =>{
-     const pokemonEl = document.createElement('div')
-     pokemonEl.classList.add('pokemon')
+    const pokemonEl = document.createElement('div')
+    pokemonEl.classList.add('pokemon')
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     const id = pokemon.id.toString().padStart(3, '0')
-     const pokeTypes = pokemon.types.map(typeKind =>typeKind.type.name)
-    // console.log(pokeTypes)
+    const pokeTypes = pokemon.types.map(typeKind =>typeKind.type.name)
+    const image= pokemon.sprites.other.dream_world.front_default
     const type = mainTypes.find(type => pokeTypes.indexOf(type) > -1)
     const color = colors[type]
 
-    
-    // console.log(color)
 
-     pokemonEl.innerHTML = 
-     `      
+    pokemonEl.innerHTML = 
+    `          
+        <span class="number">#${id}</span>
+        <span class="type-icon"></span>
+        
+        <div class="img-container">
+            <img loading="lazy" src="${image}" alt="${name}">    
+        </div>
+        <div class="info">
             
-            <span class="number">#${id}</span>
-            <span class="type-icon"></span>
+            <h3 class="name">${(name)}</h3>
             
-            <div class="img-container">
-                <img src="https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png" alt="">    
-            </div>
-            <div class="info">
-                
-                <h3 class="name">${(name)}</h3>
-                
-               <div class="extra-info">
-                    <div> <small> Weight</small> <h5 class="weight"> ${pokemon.weight/10} kg </h5>
-                    </div>
-                    <div> <small> Height</small> <h5 class="height"> ${pokemon.height/10} m</h5></div>      
+            <div class="extra-info">
+                <div> <small> Weight</small> <h5 class="weight"> ${pokemon.weight/10} kg </h5>
                 </div>
-                
-                <div class="type-data"> <small> Type:</small> <h5 class="type">${getPokemonType(pokeTypes)}</h5></div>
-                
-     </div>
+                <div> <small> Height</small> <h5 class="height"> ${pokemon.height/10} m</h5></div>      
+            </div>
+            
+            <div class="type-data"> <small> Type:</small> <h5 class="type">${getPokemonType(pokeTypes)}</h5></div>
+            
+        </div>
 
-     `
+    `
 
      const typeColor = pokemonEl.querySelector('.type-icon')
      const imageBg = pokemonEl.querySelector('.img-container')
-    //  imageBg.style.backgroundColor = color
-    //  imageBg.style.boxShadow = `0 0 5px 5px ${color}`
      pokemonEl.style.border = `2px solid ${color}`
      typeColor.style.backgroundColor = color
      typeColor.setAttribute('title', type)
@@ -117,4 +112,19 @@ function getPokemonType(pokeTypes){
 
 fetchPokemon()
 
-console.log("All the cards were generated dynamically with the data from pokeapi.com. I did't just type the whole thing out lol !")
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+lazyImages.forEach(image => {
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        image.src = image.dataset.src;
+        observer.unobserve(image);
+      }
+    });
+  });
+
+  observer.observe(image);
+});
+
+console.log("All the cards were generated dynamically with the data from pokeapi.com. !")
