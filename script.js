@@ -60,11 +60,27 @@ const fetchPokemonBatch = async () => {
   }
 }
 
+// Cache to store fetched Pokémon data
+const pokemonCache = {}
+
+// Fetch a single Pokémon by ID with caching
 // Fetch a single Pokémon by ID
 const getPokemon = async (id) => {
+  // Check if the Pokémon is already in the cache
+  if (pokemonCache[id]) {
+    console.log(`Loaded Pokémon #${id} from cache`)
+    return pokemonCache[id]
+  }
+
+  // If not in cache, fetch from API
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
   const response = await axios.get(url)
-  return response.data
+  const pokemon = response.data
+
+  // Store the fetched Pokémon in the cache
+  pokemonCache[id] = pokemon
+
+  return pokemon
 }
 
 // Create a Pokémon card
