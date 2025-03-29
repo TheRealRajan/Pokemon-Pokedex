@@ -70,7 +70,6 @@ h5 {
 
 .pokeball {
   height: 2rem;
-  /* margin-right: 0.25rem; */
   animation: bounce 0.4s linear infinite alternate;
 }
 
@@ -115,18 +114,16 @@ h1 {
   text-align: center;
   color: #f1f1f1;
   position: relative;
-  transition: scale 1s ease-in-out;
 }
 
 .pokemon:hover {
-  transform: scale(1.01);
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.4);
   cursor: pointer;
 }
 
 .pokemon .img-container {
   background: linear-gradient(to bottom,
-      rgba(214, 214, 214, 0.3),
+      rgba(214, 214, 214, 0.325),
       rgba(77, 77, 77, 0.1));
   box-shadow: 0 0 10px 10px rgba(202, 201, 201, 0.05);
   border-radius: 50%;
@@ -139,7 +136,7 @@ h1 {
   margin-top: 1rem;
   width: 85%;
   height: 85%;
-  /* filter: saturate(130%) brightness(110%); */
+  filter: saturate(120%) brightness(110%);
 }
 
 .pokemon .info {
@@ -173,13 +170,6 @@ h1 {
   margin: 1rem 0 0.3rem;
   text-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.9);
   transition: font-size 0.1s ease-out;
-  /* background: rgba(0, 0, 0, 0.1);
-  padding: 0.25rem 0.5rem;
-  border-radius: 500px; */
-}
-
-.pokemon:hover .name {
-  font-size: 1.25rem;
 }
 
 .basic-info {
@@ -208,6 +198,28 @@ small {
 
 .type-data {
   margin-top: 1rem;
+}
+
+.load-more {
+  all: unset;
+  background-color: rgba(145, 145, 145, 0.2);
+  color: #f1f1f1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 10rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.load-more:hover {
+  box-shadow: 0 3px 5px rgba(255, 255, 255, 0.2);
+  outline: 2px solid #c6c6c6;
+  padding-inline: 1.5rem;
+}
+
+.load-more:disabled {
+  cursor: not-allowed;
 }
 
 footer {
@@ -268,7 +280,6 @@ footer img {
 
   @-moz-document url-prefix('') {
     .pokemon {
-      transform: scale(0.85);
       margin: 0;
     }
   }
